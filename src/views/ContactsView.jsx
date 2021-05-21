@@ -1,5 +1,5 @@
-import { Component } from 'react';
-import { connect } from 'react-redux';
+import { useState, useEffect, useCallback } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import PhoneBookForm from '../Components/PhoneBookForm';
 import Search from '../Components/Search';
 import ContactsList from '../Components/ContactsList';
@@ -12,28 +12,20 @@ const containerView = {
   width: 600,
 };
 
-class ContactView extends Component {
-  componentDidMount() {
-    this.props.fetchContacts();
-  }
+export default function ContactView() {
+  const dispatch = useDispatch();
+  const isLoadingContacts = useSelector(contactsSelectors.getLoading);
 
-  render() {
-    return (
-      <div style={containerView}>
-        <PhoneBookForm />
-        <Search />
-        <ContactsList />
-      </div>
-    );
-  }
+  useEffect(() => {
+    dispatch(contactsOperations.fetchContacts());
+  }, [dispatch]);
+
+  return (
+    <div style={containerView}>
+      <PhoneBookForm />
+      <Search />
+      {isLoadingContacts && <p>Loading...</p>}
+      <ContactsList />
+    </div>
+  );
 }
-
-const mapStateToProps = state => ({
-  isLoadingContacts: contactsSelectors.getLoading(state),
-});
-
-const mapDispatchToProps = dispatch => ({
-  fetchContacts: () => dispatch(contactsOperations.fetchContacts()),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(ContactView);
