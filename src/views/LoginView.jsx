@@ -5,7 +5,7 @@ import styles from '../Components/PhoneBookForm/PhoneBook.module.css';
 
 export default function LoginView() {
   const dispatch = useDispatch();
-  const [name, setName] = useState('');
+  const [email, setName] = useState('');
   const [password, setPassword] = useState('');
 
   const handleChangeName = useCallback(event => {
@@ -27,7 +27,7 @@ export default function LoginView() {
     setName('');
   };
 
-  const onLogin = () => dispatch(authOperations.logIn);
+  const onLogin = () => dispatch(authOperations.logIn({ email, password }));
 
   return (
     <div className={styles.loginContainer}>
@@ -40,7 +40,7 @@ export default function LoginView() {
             className={styles.input}
             type="email"
             name="email"
-            value={name}
+            value={email}
             onChange={handleChangeName}
           />
         </label>

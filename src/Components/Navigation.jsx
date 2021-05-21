@@ -1,7 +1,6 @@
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { authSelectors } from '../redux/auth';
-import ClipLoader from './Cliploader';
 
 const styles = {
   link: {
@@ -18,6 +17,7 @@ const styles = {
 
 export default function Navigation() {
   const isLoggedIn = useSelector(authSelectors.getIsAuthenticated);
+
   return (
     <nav>
       <NavLink to="/" exact style={styles.link} activeStyle={styles.activeLink}>
