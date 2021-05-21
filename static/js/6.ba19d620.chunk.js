@@ -1,0 +1,2 @@
+(this.webpackJsonp2_2_homework=this.webpackJsonp2_2_homework||[]).push([[6],{150:function(e,s,c){"use strict";c.r(s);c(0);var a=c(2);s.default=function(){return Object(a.jsx)("div",{children:Object(a.jsx)("h1",{className:"welcome",children:"Save all your contacts easy and safe!"})})}}}]);
+//# sourceMappingURL=6.ba19d620.chunk.js.map
