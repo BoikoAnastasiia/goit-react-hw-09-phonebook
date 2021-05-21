@@ -1,0 +1,7 @@
+.Container {
+  margin-left: auto;
+  margin-right: auto;
+  height: 100%;
+  font-family: 'Roboto', Tahoma, Geneva, Verdana, sans-serif;
+  width: 1200px;
+}
