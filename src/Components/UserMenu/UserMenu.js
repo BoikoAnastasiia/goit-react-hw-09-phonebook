@@ -9,7 +9,7 @@ const UserMenu = ({ avatar, name, onLogout }) => (
   <div className={styles.userMenuWrapper}>
     <img src={avatar} alt={name} width="32" className={styles.userMenuAvatar} />
     <span className={styles.name}>{name}</span>
-    <Button variant="outlined" color="white" onClick={onLogout}>
+    <Button variant="outlined" color="inherit" onClick={onLogout}>
       Logout
     </Button>
   </div>
