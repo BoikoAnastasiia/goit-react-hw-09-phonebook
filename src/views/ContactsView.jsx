@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import PhoneBookForm from '../Components/PhoneBookForm';
 import Search from '../Components/Search';
 import ContactsList from '../Components/ContactsList';
+import ClipLoader from '../Components/Cliploader';
 
 import { contactsOperations, contactsSelectors } from '../redux/contacts';
 
@@ -24,7 +25,7 @@ export default function ContactView() {
     <div style={containerView}>
       <PhoneBookForm />
       <Search />
-      {isLoadingContacts && <p>Loading...</p>}
+      {isLoadingContacts && <ClipLoader />}
       <ContactsList />
     </div>
   );

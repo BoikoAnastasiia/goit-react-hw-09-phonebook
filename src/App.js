@@ -6,6 +6,7 @@ import PublicRoute from './Components/Routes/PublicRoute';
 import { authOperations } from './redux/auth';
 import { connect } from 'react-redux';
 import { Switch } from 'react-router-dom';
+import ClipLoader from './Components/Cliploader';
 
 const HomeView = lazy(() => import('./views/HomeView'));
 const RegisterView = lazy(() => import('./views/RegisterView'));
@@ -21,7 +22,7 @@ class App extends Component {
     return (
       <Container>
         <AppBar />
-        <Suspense fallback={<p>Loading...</p>}>
+        <Suspense fallback={<ClipLoader />}>
           <Switch>
             <PublicRoute exact path="/" component={HomeView} />
             <PublicRoute
