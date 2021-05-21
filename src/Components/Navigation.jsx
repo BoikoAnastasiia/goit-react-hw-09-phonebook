@@ -24,7 +24,7 @@ export default function Navigation() {
         Home page
       </NavLink>
 
-      {<ClipLoader /> && (
+      {isLoggedIn && (
         <NavLink
           to="/contacts"
           exact

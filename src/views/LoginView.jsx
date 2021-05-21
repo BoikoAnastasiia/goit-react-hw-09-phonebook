@@ -1,17 +1,7 @@
 import { useState, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import { authOperations } from '../redux/auth';
-
-const styles = {
-  form: {
-    width: 320,
-  },
-  label: {
-    display: 'flex',
-    flexDirection: 'column',
-    marginBottom: 15,
-  },
-};
+import styles from '../Components/PhoneBookForm/PhoneBook.module.css';
 
 export default function LoginView() {
   const dispatch = useDispatch();
@@ -40,13 +30,14 @@ export default function LoginView() {
   const onLogin = () => dispatch(authOperations.logIn);
 
   return (
-    <div>
+    <div className={styles.loginContainer}>
       <h1>Страница логина</h1>
 
-      <form onSubmit={handleSubmit} style={styles.form} autoComplete="off">
-        <label style={styles.label}>
+      <form onSubmit={handleSubmit} className={styles.form} autoComplete="off">
+        <label className={styles.label}>
           email
           <input
+            className={styles.input}
             type="email"
             name="email"
             value={name}
@@ -54,9 +45,10 @@ export default function LoginView() {
           />
         </label>
 
-        <label style={styles.label}>
+        <label className={styles.label}>
           Password
           <input
+            className={styles.input}
             type="password"
             name="password"
             value={password}
@@ -64,7 +56,9 @@ export default function LoginView() {
           />
         </label>
 
-        <button type="submit">Войти</button>
+        <button className={styles.button} type="submit">
+          Войти
+        </button>
       </form>
     </div>
   );
