@@ -8,13 +8,16 @@ export default function LoginView() {
   const [email, setName] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleChangeName = useCallback(event => {
-    setName(event.currentTarget.value);
-  }, []);
-
-  const handleChangePassword = useCallback(event => {
-    setPassword(event.currentTarget.value);
-  }, []);
+  const handleChange = ({ target: { name, value } }) => {
+    switch (name) {
+      case 'email':
+        return setName(value);
+      case 'password':
+        return setPassword(value);
+      default:
+        return;
+    }
+  };
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -41,7 +44,7 @@ export default function LoginView() {
             type="email"
             name="email"
             value={email}
-            onChange={handleChangeName}
+            onChange={handleChange}
           />
         </label>
 
@@ -52,7 +55,7 @@ export default function LoginView() {
             type="password"
             name="password"
             value={password}
-            onChange={handleChangePassword}
+            onChange={handleChange}
           />
         </label>
 

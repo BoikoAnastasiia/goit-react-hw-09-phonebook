@@ -23,13 +23,16 @@ export default function PhoneBookForm() {
     [dispatch, name, number],
   );
 
-  const handleChangeName = useCallback(event => {
-    setName(event.currentTarget.value);
-  }, []);
-
-  const handleChangeNumber = useCallback(event => {
-    setNumber(event.currentTarget.value);
-  }, []);
+  const handleChange = ({ target: { name, value } }) => {
+    switch (name) {
+      case 'name':
+        return setName(value);
+      case 'number':
+        return setNumber(value);
+      default:
+        return;
+    }
+  };
 
   const reset = () => {
     setNumber('');
@@ -40,26 +43,26 @@ export default function PhoneBookForm() {
     <form className={styles.form} onSubmit={handleSubmit}>
       <label className={styles.label}> Name </label>
       <input
-        onChange={handleChangeName}
+        onChange={handleChange}
         value={name}
         className={styles.input}
         type="text"
         name="name"
-        // pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-        // title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
+        pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+        title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
         required
       />
       <label className={styles.label}> Phone number </label>
 
       <input
-        onChange={handleChangeNumber}
+        onChange={handleChange}
         type="tel"
         className={styles.input}
         value={number}
         name="number"
-        // pattern="(\+?( |-|\.)?\d{1,2}( |-|\.)?)?(\(?\d{3}\)?|\d{3})( |-|\.)?(\d{3}( |-|\.)?\d{4})"
-        // title="Номер телефона должен состоять из 11-12 цифр и может содержать цифры, пробелы, тире, пузатые скобки и может начинаться с +"
-        // required
+        pattern="(\+?( |-|\.)?\d{1,2}( |-|\.)?)?(\(?\d{3}\)?|\d{3})( |-|\.)?(\d{3}( |-|\.)?\d{4})"
+        title="Номер телефона должен состоять из 11-12 цифр и может содержать цифры, пробелы, тире, пузатые скобки и может начинаться с +"
+        required
       />
       <Fab type="submit" color="inherit" aria-label="add">
         <AddIcon />
